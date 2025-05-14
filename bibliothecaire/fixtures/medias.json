@@ -1,0 +1,116 @@
+[
+  {
+    "model": "bibliothecaire.livre",
+    "pk": 1,
+    "fields": {
+      "nom": "1984",
+      "auteur": "George Orwell",
+      "date_emprunt": null,
+      "disponible": true
+    }
+  },
+  {
+    "model": "bibliothecaire.livre",
+    "pk": 2,
+    "fields": {
+      "nom": "Le Meilleur des mondes",
+      "auteur": "Aldous Huxley",
+      "date_emprunt": "2025-05-01",
+      "disponible": false
+    }
+  },
+  {
+    "model": "bibliothecaire.livre",
+    "pk": 3,
+    "fields": {
+      "nom": "Fahrenheit 451",
+      "auteur": "Ray Bradbury",
+      "date_emprunt": null,
+      "disponible": true
+    }
+  },
+  {
+    "model": "bibliothecaire.cd",
+    "pk": 1,
+    "fields": {
+      "nom": "Thriller",
+      "artiste": "Michael Jackson",
+      "date_emprunt": null,
+      "disponible": true
+    }
+  },
+  {
+    "model": "bibliothecaire.cd",
+    "pk": 2,
+    "fields": {
+      "nom": "Back in Black",
+      "artiste": "AC/DC",
+      "date_emprunt": "2025-05-10",
+      "disponible": false
+    }
+  },
+  {
+    "model": "bibliothecaire.cd",
+    "pk": 3,
+    "fields": {
+      "nom": "Random Access Memories",
+      "artiste": "Daft Punk",
+      "date_emprunt": null,
+      "disponible": true
+    }
+  },
+  {
+    "model": "bibliothecaire.dvd",
+    "pk": 1,
+    "fields": {
+      "nom": "Inception",
+      "realisateur": "Christopher Nolan",
+      "date_emprunt": null,
+      "disponible": true
+    }
+  },
+  {
+    "model": "bibliothecaire.dvd",
+    "pk": 2,
+    "fields": {
+      "nom": "Le Seigneur des Anneaux",
+      "realisateur": "Peter Jackson",
+      "date_emprunt": "2025-04-25",
+      "disponible": false
+    }
+  },
+  {
+    "model": "bibliothecaire.dvd",
+    "pk": 3,
+    "fields": {
+      "nom": "Matrix",
+      "realisateur": "Les Wachowski",
+      "date_emprunt": null,
+      "disponible": true
+    }
+  },
+  {
+    "model": "bibliothecaire.jeux_de_plateau",
+    "pk": 1,
+    "fields": {
+      "nom": "Catan",
+      "createur": "Klaus Teuber"
+    }
+  },
+  {
+    "model": "bibliothecaire.jeux_de_plateau",
+    "pk": 2,
+    "fields": {
+      "nom": "7 Wonders",
+      "createur": "Antoine Bauza"
+    }
+  },
+  {
+    "model": "bibliothecaire.jeux_de_plateau",
+    "pk": 3,
+    "fields": {
+      "nom": "Carcassonne",
+      "createur": "Klaus-Jürgen Wrede"
+    }
+  }
+]
