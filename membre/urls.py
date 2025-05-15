@@ -1,10 +1,10 @@
 from django.urls import path
-from membre.views import liste_medias
+from membre.views import accueil_membre
 
 
 app_name = 'membre'
 
 
 urlpatterns = [
-    path('', liste_medias, name = 'liste_medias')
+    path('accueil/', accueil_membre, name = 'accueil_membre')
 ]
