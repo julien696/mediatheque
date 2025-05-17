@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Bibliothecaire{% endblock %}
+
+{% block h1 %}Espace Bibliothecaire{% endblock %}
+
+{% block content %}
+
+{% include 'ajout_livre.html' %}
+
+<h3>liste des livres</h3>
+<ul>
+    {% for livre in livre%}
+    <li>{{livre.nom}} - {{livre.auteur}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
