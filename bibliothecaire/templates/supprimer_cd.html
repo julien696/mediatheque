@@ -1,0 +1,11 @@
+<h2>
+    Confirmer la suppression
+</h2>
+<span>
+    Voulez-vous supprimer {{cd.nom}}
+</span>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Confimer la suppression">
+    <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">Annuler</a>
+</form>

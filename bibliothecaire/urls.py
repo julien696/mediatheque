@@ -6,7 +6,16 @@ app_name = 'bibliothecaire'
 
 urlpatterns = [
     path('accueil', views.accueil_bibliothecaire, name = 'accueil_bibliothecaire'),
-    path('ajout_livre', views.ajout_livre, name = 'ajout_livre'),
+    path('ajouter_livre', views.ajouter_livre, name = 'ajouter_livre'),
     path('modifier_livre/<int:livre_id>/', views.modifier_livre, name = 'modifier_livre'),
-    path('supprimer_livre/<int:livre_id>/', views.supprimer_livre, name = 'supprimer_livre')
+    path('supprimer_livre/<int:livre_id>/', views.supprimer_livre, name = 'supprimer_livre'),
+    path('ajouter_cd', views.ajouter_cd, name = 'ajouter_cd'),
+    path('modifier_cd/<int:cd_id>/', views.modifier_cd, name = 'modifier_cd'),
+    path('supprimer_cd/<int:cd_id>/', views.supprimer_cd, name = 'supprimer_cd'),
+    path('ajouter_dvd', views.ajouter_dvd, name = 'ajouter_dvd'),
+    path('modifier_dvd/<int:dvd_id>/', views.modifier_dvd, name = 'modifier_dvd'),
+    path('supprimer_dvd/<int:dvd_id>/', views.supprimer_dvd, name = 'supprimer_dvd'),
+    path('ajouter_jeux_de_plateau', views.ajouter_jeux_de_plateau, name = 'ajouter_jeux_de_plateau'),
+    path('modifier_jeux_de_plateau/<int:jeux_de_plateau_id>/', views.modifier_jeux_de_plateau, name = 'modifier_jeux_de_plateau'),
+    path('supprimer_jeux_de_plateau/<int:jeux_de_plateau_id>/', views.supprimer_jeux_de_plateau, name = 'supprimer_jeux_de_plateau')
 ]

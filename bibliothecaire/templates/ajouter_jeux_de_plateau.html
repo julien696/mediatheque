@@ -1,9 +1,9 @@
-<h2>Modifier {{livre.nom}}</h2>
+<h2>Ajouter un jeu de plateau</h2>
 
 <form method="post">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Modifier">
+    <input type="submit" value="Ajouter un jeu de plateau">
 </form>
 <p>
     Retournez sur <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">accueil bibliothecaire</a>
