@@ -5,6 +5,9 @@
 {% block submenu %}
 <nav>
     <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#livre">Livre</a>
+    <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#cd">Cd</a>
+    <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#dvd">Dvd</a>
+    <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#jeux">Jeux de plateau</a>
     
 </nav>
 {% endblock %}
@@ -13,28 +16,107 @@
 
 {% block content %}
 
-<h2 id="livre">liste des livres</h2>
+<section id="livre">
+    <h2>liste des livres</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Auteur</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for livre in livre%}
+            <tr>
+                <td>{{livre.nom}}</td>
+                <td>{{livre.auteur}}</td>
+                <td>
+                    <a href="{% url 'bibliothecaire:ajouter_livre' %}">&#10133;</a>
+                    <a href="{% url 'bibliothecaire:modifier_livre' livre.id %}">&#9998;</a>
+                    <a href="{% url 'bibliothecaire:supprimer_livre' livre.id %}">&#10060;</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Auteur</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for livre in livre%}
-        <tr>
-            <td>{{livre.nom}}</td>
-            <td>{{livre.auteur}}</td>
-            <td>
-                <a href="{% url 'bibliothecaire:ajout_livre' %}">&#10133;</a>
-                <a href="{% url 'bibliothecaire:modifier_livre' livre.id %}">&#9998;</a>
-                <a href="{% url 'bibliothecaire:supprimer_livre' livre.id %}">&#10060;</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<section id="cd">
+    <h2>Liste des Cd</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Artiste</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cd in cd%}
+            <tr>
+                <td>{{cd.nom}}</td>
+                <td>{{cd.artiste}}</td>
+                <td>
+                    <a href="{% url 'bibliothecaire:ajouter_cd' %}">&#10133;</a>
+                    <a href="{% url 'bibliothecaire:modifier_cd' cd.id %}">&#9998;</a>
+                    <a href="{% url 'bibliothecaire:supprimer_cd' cd.id %}">&#10060;</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+<section id="dvd">
+    <h2>Liste des Dvd</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Réalisateur</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dvd in dvd %}
+            <tr>
+                <td>{{dvd.nom}}</td>
+                <td>{{dvd.realisateur}}</td>
+                <td>
+                    <a href="{% url 'bibliothecaire:ajouter_dvd' %}">&#10133;</a>
+                    <a href="{% url 'bibliothecaire:modifier_dvd' dvd.id %}">&#9998;</a>
+                    <a href="{% url 'bibliothecaire:supprimer_dvd' dvd.id %}">&#10060;</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+<section id="jeux">
+    <h2>Liste des Jeux de plateau</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Créateur</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jeux_de_plateau in jeux_de_plateau %}
+            <tr>
+                <td>{{jeux_de_plateau.nom}}</td>
+                <td>{{jeux_de_plateau.createur}}</td>
+                <td>
+                    <a href="{% url 'bibliothecaire:ajouter_jeux_de_plateau' %}">&#10133;</a>
+                    <a href="{% url 'bibliothecaire:modifier_jeux_de_plateau' jeux_de_plateau.id %}">&#9998;</a>
+                    <a href="{% url 'bibliothecaire:supprimer_jeux_de_plateau' jeux_de_plateau.id %}">&#10060;</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
 {% endblock %}
