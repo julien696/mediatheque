@@ -13,7 +13,8 @@
             <a href="{% url 'accueil' %}">Acceuil</a>
             <a href="{% url 'membre:accueil_membre' %}">Espace Membre</a>
             <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">Espace Bibliothecaire</a>
-            
+            {% block submenu %}
+            {% endblock %}
         </nav>
         <h1>
             {% block h1 %}Médiathèque{% endblock %}
