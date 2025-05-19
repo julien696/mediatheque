@@ -1,0 +1,10 @@
+<h2>Modifier {{membre.nom}} - {{membre.prenom}}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Modifier">
+</form>
+<p>
+    Retournez sur <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">accueil bibliothecaire</a>
+</p>

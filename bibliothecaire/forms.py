@@ -1,5 +1,5 @@
 from django import forms
-from .models import Livre, Dvd, Cd, Jeux_de_plateau
+from .models import Livre, Dvd, Cd, Jeux_de_plateau, Membre
 
 
 class LivreForm(forms.ModelForm):
@@ -32,3 +32,11 @@ class JeuxDePlateauForm(forms.ModelForm):
         model = Jeux_de_plateau
         fields = ['nom', 'createur']
         labels = {'nom': 'Nom', 'createur': 'Créateur'}
+
+
+class MembreForm(forms.ModelForm):
+
+    class Meta:
+        model = Membre
+        fields = ['nom', 'prenom']
+        labels = {'nom': 'Nom', 'prenom': 'Prénom'}
