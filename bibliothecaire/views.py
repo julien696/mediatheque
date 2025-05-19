@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Livre, Cd, Dvd, Jeux_de_plateau
-from .forms import LivreForm, CdForm, DvdForm, JeuxDePlateauForm
+from .models import Livre, Cd, Dvd, Jeux_de_plateau, Membre
+from .forms import LivreForm, CdForm, DvdForm, JeuxDePlateauForm, MembreForm
 
 # Create your views here.
 
 
 def accueil_bibliothecaire(request):
 
-    context = {"livre" : Livre.objects.all(),
-               "dvd" : Dvd.objects.all(),
-               "cd" : Cd.objects.all(),
+    context = {"livres" : Livre.objects.all(),
+               "dvds" : Dvd.objects.all(),
+               "cds" : Cd.objects.all(),
                "jeux_de_plateau" : Jeux_de_plateau.objects.all(),
+               "membres" : Membre.objects.all()
                }
     
     return render(request, 'accueil_bibliothecaire.html', context)
@@ -105,7 +106,7 @@ def supprimer_cd(request, cd_id):
 
 def ajouter_dvd(request):
     if request.method == 'POST':
-        form = DvdForm(request)
+        form = DvdForm(request.POST)
 
         if form.is_valid():
             form.save()
@@ -148,7 +149,7 @@ def supprimer_dvd(request, dvd_id):
 
 def ajouter_jeux_de_plateau(request):
     if request.method == 'POST':
-        form = JeuxDePlateauForm(request)
+        form = JeuxDePlateauForm(request.POST)
 
         if form.is_valid():
             form.save()
@@ -184,3 +185,47 @@ def supprimer_jeux_de_plateau(request, jeux_de_plateau_id):
         return redirect("bibliothecaire:accueil_bibliothecaire")
     
     return render(request, 'supprimer_jeux_de_plateau.html', {'jeux_de_plateau':jeux_de_plateau})
+
+#--------------------------Fin de partie jeux de plateau -----------------------------------
+
+#------------------------------ partie Membre ------------------------------------------
+
+def ajouter_membre(request):
+    if request.method == 'POST':
+        form = MembreForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("bibliothecaire:accueil_bibliothecaire")
+        
+    else:
+        form = MembreForm()
+
+    return render(request, 'ajouter_membre.html', {'form':form})
+
+
+def modifier_membre(request, membre_id):
+    membre = get_object_or_404(Membre, id = membre_id)
+
+    if request.method == 'POST':
+        form = MembreForm(request.POST, instance = membre)
+
+        if form.is_valid():
+            form.save()
+            return redirect("bibliothecaire:accueil_bibliothecaire")
+        
+    else:
+        form = MembreForm(instance = membre)
+
+    return render(request, 'modifier_membre.html', {'form': form, 'membre': membre})
+
+
+def supprimer_membre(request, membre_id):
+    membre = get_object_or_404(Membre, id = membre_id)
+
+    if request.method == 'POST':
+        membre.delete()
+        return redirect("bibliothecaire:accueil_bibliothecaire")
+    
+    else:
+        return render(request, 'supprimer_membre.html', {'membre': membre})

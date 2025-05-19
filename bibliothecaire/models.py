@@ -4,9 +4,20 @@ from django.db import models
 # Create your models here.
 
 
+class Membre(models.Model):
+    nom = models.CharField(max_length=100)
+    prenom = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.nom} - {self.prenom}"
+
+
 class Emprunteur(models.Model):
     nom = models.CharField(max_length=100)
     bloque = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.nom
 
 
 class Media(models.Model):
@@ -22,15 +33,29 @@ class Media(models.Model):
 class Livre(Media):
     auteur = models.CharField(max_length=100)
 
+    def __str__(self):
+        return f"{self.nom} - {self.auteur}"
+
 
 class Dvd(Media):
     realisateur = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.nom} - {self.realisateur}"
 
 
 class Cd(Media):
     artiste = models.CharField(max_length=100)
 
+    def __str_(self):
+        return f"{self.nom} - {self.artiste}"
+
 
 class Jeux_de_plateau(models.Model):
     nom = models.CharField(max_length=100)
     createur = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.nom} - {self.createur}"
+
+

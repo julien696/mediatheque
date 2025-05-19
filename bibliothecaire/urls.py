@@ -17,5 +17,8 @@ urlpatterns = [
     path('supprimer_dvd/<int:dvd_id>/', views.supprimer_dvd, name = 'supprimer_dvd'),
     path('ajouter_jeux_de_plateau', views.ajouter_jeux_de_plateau, name = 'ajouter_jeux_de_plateau'),
     path('modifier_jeux_de_plateau/<int:jeux_de_plateau_id>/', views.modifier_jeux_de_plateau, name = 'modifier_jeux_de_plateau'),
-    path('supprimer_jeux_de_plateau/<int:jeux_de_plateau_id>/', views.supprimer_jeux_de_plateau, name = 'supprimer_jeux_de_plateau')
+    path('supprimer_jeux_de_plateau/<int:jeux_de_plateau_id>/', views.supprimer_jeux_de_plateau, name = 'supprimer_jeux_de_plateau'),
+    path('ajouter_membre', views.ajouter_membre, name = 'ajouter_membre'),
+    path('modifier_membre/<int:membre_id>/', views.modifier_membre, name = 'modifier_membre'),
+    path('supprimer_membre/<int:membre_id>/', views.supprimer_membre, name = 'supprimer_membre')
 ]
