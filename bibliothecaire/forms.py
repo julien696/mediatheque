@@ -1,5 +1,5 @@
 from django import forms
-from .models import Livre, Dvd, Cd, Jeux_de_plateau, Membre
+from .models import Livre, Dvd, Cd, Jeux_de_plateau, Membre, Emprunt
 
 
 class LivreForm(forms.ModelForm):
@@ -40,3 +40,11 @@ class MembreForm(forms.ModelForm):
         model = Membre
         fields = ['nom', 'prenom']
         labels = {'nom': 'Nom', 'prenom': 'Prénom'}
+
+
+class EmprunterMediaForm(forms.ModelForm):
+    membre = forms.ModelChoiceField(queryset = Membre.objects.all(), label = "Sélectionner un membre")
+
+    class Meta:
+        model = Emprunt
+        fields = ['membre']

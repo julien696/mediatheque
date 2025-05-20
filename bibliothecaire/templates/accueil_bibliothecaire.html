@@ -20,6 +20,9 @@
         <li>
             <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#membre_liste">Liste des membres</a>
         </li>
+        <li>
+            <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#emprunt_liste">Listes des emprunts</a>
+        </li>
     </ul>  
 </nav>
 {% endblock %}
@@ -27,6 +30,15 @@
 {% block h1 %}Espace Bibliothecaire{% endblock %}
 
 {% block content %}
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
 <section id="livre">
     <h2>liste des livres</h2>
@@ -49,6 +61,7 @@
                 <td>
                     <a href="{% url 'bibliothecaire:modifier_livre' livre.id %}">&#9998;</a>
                     <a href="{% url 'bibliothecaire:supprimer_livre' livre.id %}">&#10060;</a>
+                    <a href="{% url 'bibliothecaire:emprunter_media' media_type='livres' media_id=livre.id %}">Emprunter</a>
                 </td>
             </tr>
             {% endfor %}
@@ -77,6 +90,7 @@
                 <td>
                     <a href="{% url 'bibliothecaire:modifier_cd' cd.id %}">&#9998;</a>
                     <a href="{% url 'bibliothecaire:supprimer_cd' cd.id %}">&#10060;</a>
+                    <a href="{% url 'bibliothecaire:emprunter_media' media_type='cds' media_id=cd.id %}">Emprunter</a>
                 </td>
             </tr>
             {% endfor %}
@@ -102,9 +116,10 @@
             <tr>
                 <td>{{dvd.nom}}</td>
                 <td>{{dvd.realisateur}}</td>
-                <td>
+                <td colspan="3">
                     <a href="{% url 'bibliothecaire:modifier_dvd' dvd.id %}">&#9998;</a>
                     <a href="{% url 'bibliothecaire:supprimer_dvd' dvd.id %}">&#10060;</a>
+                    <a href="{% url 'bibliothecaire:emprunter_media' media_type='dvds' media_id=dvd.id %}">Emprunter</a>
                 </td>
             </tr>
             {% endfor %}
@@ -130,7 +145,7 @@
             <tr>
                 <td>{{jeux_de_plateau.nom}}</td>
                 <td>{{jeux_de_plateau.createur}}</td>
-                <td>
+                <td colspan="2">
                     <a href="{% url 'bibliothecaire:modifier_jeux_de_plateau' jeux_de_plateau.id %}">&#9998;</a>
                     <a href="{% url 'bibliothecaire:supprimer_jeux_de_plateau' jeux_de_plateau.id %}">&#10060;</a>
                 </td>
@@ -158,9 +173,55 @@
             <tr>
                 <td>{{membre.nom}}</td>
                 <td>{{membre.prenom}}</td>
-                <td>
+                <td colspan="2">
                     <a href="{% url 'bibliothecaire:modifier_membre' membre.id %}">&#9998;</a>
                     <a href="{% url 'bibliothecaire:supprimer_membre' membre.id %}">&#10060;</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+<section id="emprunt_liste">
+    <h2>Liste des emprunts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Membre</th>
+                <th>Média</th>
+                <th>Date emprunt</th>
+                <th>Date de retour</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emprunt in emprunts %}
+            <tr>
+                <td>{{emprunt.membre.nom}} {{emprunt.membre.prenom}}</td>
+                <td>{% if emprunt.livre_emprunt %}
+                    Livre : {{emprunt.livre_emprunt.nom}}
+                    {% elif emprunt.cd_emprunt %}
+                    Cd : {{emprunt.cd_emprunt.nom}}
+                    {% elif emprunt.dvd_emprunt %}
+                    Dvd : {{emprunt.dvd_emprunt.nom}}
+                    {% endif %}
+                </td>
+                <td>
+                    {{emprunt.date_emprunt}}
+                </td>
+                <td>
+                    {{emprunt.date_retour}}
+                </td>
+                <td>
+                    {% if emprunt.livre_emprunt and not emprunt.livre_emprunt.disponible %}
+                    <a href="{% url 'bibliothecaire:rendre_emprunt' emprunt.id %}">Rendre</a>
+                    {% elif emprunt.cd_emprunt and not emprunt.cd_emprunt.disponible %}
+                        <a href="{% url 'bibliothecaire:rendre_emprunt' emprunt.id %}">Rendre</a>
+                    {% elif emprunt.dvd_emprunt and not emprunt.dvd_emprunt.disponible %}
+                        <a href="{% url 'bibliothecaire:rendre_emprunt' emprunt.id %}">Rendre</a>
+                    {% else %}
+                        Retourné
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
