@@ -59,3 +59,15 @@ class Jeux_de_plateau(models.Model):
         return f"{self.nom} - {self.createur}"
 
 
+class Emprunt(models.Model):
+    membre = models.ForeignKey(Membre, on_delete=models.CASCADE)
+    livre_emprunt = models.ForeignKey(Livre, on_delete=models.SET_NULL, null=True, blank=True)
+    cd_emprunt = models.ForeignKey(Cd, on_delete=models.SET_NULL, null=True, blank=True)
+    dvd_emprunt = models.ForeignKey(Dvd, on_delete=models.SET_NULL, null=True, blank=True)
+    date_emprunt = models.DateField(auto_now=True)
+    date_retour = models.DateField()
+    date_retour_effectif = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        media = self.livre_emprunt or self.cd_emprunt or self.dvd_emprunt
+        return f"{self.membre} a emprunté {media} le {self.date_emprunt}"

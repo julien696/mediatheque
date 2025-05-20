@@ -1,0 +1,10 @@
+<h2>Emprunter : {{media.nom}}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Emprunter">
+</form>
+<p>
+    Retournez sur <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">accueil bibliothecaire</a>
+</p>
