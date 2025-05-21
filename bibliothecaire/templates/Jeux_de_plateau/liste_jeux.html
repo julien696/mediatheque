@@ -1,0 +1,27 @@
+<section id="jeux">
+    <h2>Liste des Jeux de plateau</h2>
+    <button>
+        <a href="{% url 'bibliothecaire:ajouter_jeux_de_plateau' %}">Ajouter un Jeux de plateau</a>
+    </button>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Créateur</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jeux_de_plateau in jeux_de_plateau %}
+            <tr>
+                <td>{{jeux_de_plateau.nom}}</td>
+                <td>{{jeux_de_plateau.createur}}</td>
+                <td colspan="2">
+                    <a href="{% url 'bibliothecaire:modifier_jeux_de_plateau' jeux_de_plateau.id %}">&#9998;</a>
+                    <a href="{% url 'bibliothecaire:supprimer_jeux_de_plateau' jeux_de_plateau.id %}">&#10060;</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>

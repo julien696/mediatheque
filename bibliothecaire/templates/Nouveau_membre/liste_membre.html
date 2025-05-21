@@ -1,0 +1,27 @@
+<section id="membre_liste">
+    <h2>Liste des membres</h2>
+    <button>
+        <a href="{% url 'bibliothecaire:ajouter_membre' %}">Ajouter un membre</a>
+    </button>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membre in membres %}
+            <tr>
+                <td>{{membre.nom}}</td>
+                <td>{{membre.prenom}}</td>
+                <td colspan="2">
+                    <a href="{% url 'bibliothecaire:modifier_membre' membre.id %}">&#9998;</a>
+                    <a href="{% url 'bibliothecaire:supprimer_membre' membre.id %}">&#10060;</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>

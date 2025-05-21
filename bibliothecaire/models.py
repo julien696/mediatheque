@@ -9,7 +9,7 @@ class Membre(models.Model):
     prenom = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.nom} - {self.prenom}"
+        return f"{self.nom} - {self.prenom} (ID : {self.id})"
 
 
 class Emprunteur(models.Model):

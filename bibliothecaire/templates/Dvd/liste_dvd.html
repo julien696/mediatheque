@@ -1,0 +1,28 @@
+<section id="dvd">
+    <h2>Liste des Dvd</h2>
+    <button>
+        <a href="{% url 'bibliothecaire:ajouter_dvd' %}">Ajouter un dvd</a>
+    </button>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Réalisateur</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dvd in dvds %}
+            <tr>
+                <td>{{dvd.nom}}</td>
+                <td>{{dvd.realisateur}}</td>
+                <td colspan="3">
+                    <a href="{% url 'bibliothecaire:modifier_dvd' dvd.id %}">&#9998;</a>
+                    <a href="{% url 'bibliothecaire:supprimer_dvd' dvd.id %}">&#10060;</a>
+                    <a href="{% url 'bibliothecaire:emprunter_media' media_type='dvds' media_id=dvd.id %}">Emprunter</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
