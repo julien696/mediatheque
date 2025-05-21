@@ -4,10 +4,11 @@ from .forms import LivreForm, CdForm, DvdForm, JeuxDePlateauForm, MembreForm, Em
 from datetime import date, timedelta
 from django.utils import timezone
 from django.contrib import messages
+from .decorators import superuser_required
 
 # Create your views here.
 
-
+@superuser_required
 def accueil_bibliothecaire(request):
 
     context = {"livres" : Livre.objects.all(),
@@ -22,6 +23,7 @@ def accueil_bibliothecaire(request):
 
 #----------------------------- Partie Livre --------------------------------
 
+@superuser_required
 def ajouter_livre(request):
     if request.method == 'POST':
         form = LivreForm(request.POST)
@@ -36,6 +38,7 @@ def ajouter_livre(request):
     return render(request, 'Livre/ajouter_livre.html', {'form':form})
 
 
+@superuser_required
 def modifier_livre(request, livre_id):
     livre = get_object_or_404(Livre, id = livre_id)
 
@@ -52,6 +55,7 @@ def modifier_livre(request, livre_id):
     return render(request, 'Livre/modifier_livre.html', {'form':form, 'livre':livre})
 
 
+@superuser_required
 def supprimer_livre(request, livre_id):
     livre = get_object_or_404(Livre, id = livre_id)
 
@@ -62,6 +66,7 @@ def supprimer_livre(request, livre_id):
     return render(request, 'Livre/supprimer_livre.html', {'livre':livre})
 
 
+@superuser_required
 def liste_livre(request):
     livres = Livre.objects.all()
     return render(request, 'Livre/liste_livre.html', {'livres':livres})
@@ -70,6 +75,7 @@ def liste_livre(request):
 
 #-------------------- Partie cd ---------------------------------------
 
+@superuser_required
 def ajouter_cd(request):
     if request.method == 'POST':
         form = CdForm(request.POST)
@@ -84,6 +90,7 @@ def ajouter_cd(request):
     return render(request, 'Cd/ajouter_cd.html', {'form':form})
 
 
+@superuser_required
 def modifier_cd(request, cd_id):
     cd = get_object_or_404(Cd, id = cd_id)
 
@@ -100,6 +107,7 @@ def modifier_cd(request, cd_id):
     return render(request, 'Cd/modifier_cd.html', {'form':form, 'cd':cd})
 
 
+@superuser_required
 def supprimer_cd(request, cd_id):
     cd = get_object_or_404(Cd, id = cd_id)
 
@@ -110,6 +118,7 @@ def supprimer_cd(request, cd_id):
     return render(request, 'Cd/supprimer_cd.html', {'cd':cd})
 
 
+@superuser_required
 def liste_cd(request):
     cds = Cd.objects.all()
     return render(request, 'Cd/liste_cd.html', {'cds':cds})
@@ -118,6 +127,7 @@ def liste_cd(request):
 
 #------------------------ partie dvd -------------------------------------
 
+@superuser_required
 def ajouter_dvd(request):
     if request.method == 'POST':
         form = DvdForm(request.POST)
@@ -132,6 +142,7 @@ def ajouter_dvd(request):
     return render(request, 'Dvd/ajouter_dvd.html', {'form':form})
 
 
+@superuser_required
 def modifier_dvd(request, dvd_id):
     dvd = get_object_or_404(Dvd, id = dvd_id)
 
@@ -148,6 +159,7 @@ def modifier_dvd(request, dvd_id):
     return render(request, 'Dvd/modifier_dvd.html', {'form':form, 'dvd':dvd})
 
 
+@superuser_required
 def supprimer_dvd(request, dvd_id):
     dvd = get_object_or_404(Dvd, id = dvd_id)
 
@@ -158,6 +170,7 @@ def supprimer_dvd(request, dvd_id):
     return render(request, 'Dvd/supprimer_dvd.html', {'dvd':dvd})
 
 
+@superuser_required
 def liste_dvd(request):
     dvds = Dvd.objects.all()
     return render(request, 'Dvd/liste_dvd.html', {'dvds':dvds})
@@ -166,6 +179,7 @@ def liste_dvd(request):
 
 #-----------------------partie jeux de plateaux ----------------------------
 
+@superuser_required
 def ajouter_jeux_de_plateau(request):
     if request.method == 'POST':
         form = JeuxDePlateauForm(request.POST)
@@ -180,6 +194,7 @@ def ajouter_jeux_de_plateau(request):
     return render(request, 'Jeux_de_plateau/ajouter_jeux_de_plateau.html', {'form':form})
 
 
+@superuser_required
 def modifier_jeux_de_plateau(request, jeux_de_plateau_id):
     jeux_de_plateau = get_object_or_404(Jeux_de_plateau, id = jeux_de_plateau_id)
 
@@ -196,6 +211,7 @@ def modifier_jeux_de_plateau(request, jeux_de_plateau_id):
     return render(request, 'Jeux_de_plateau/modifier_jeux_de_plateau.html', {'form':form, 'jeux_de_plateau':jeux_de_plateau})
 
 
+@superuser_required
 def supprimer_jeux_de_plateau(request, jeux_de_plateau_id):
     jeux_de_plateau = get_object_or_404(Jeux_de_plateau, id = jeux_de_plateau_id)
 
@@ -206,6 +222,7 @@ def supprimer_jeux_de_plateau(request, jeux_de_plateau_id):
     return render(request, 'Jeux_de_plateau/supprimer_jeux_de_plateau.html', {'jeux_de_plateau':jeux_de_plateau})
 
 
+@superuser_required
 def liste_jeux(request):
     jeux = Jeux_de_plateau.objects.all()
     return render(request, 'Jeux_de_plateau/liste_jeux.html', {'jeux':jeux})
@@ -214,6 +231,7 @@ def liste_jeux(request):
 
 #------------------------------ partie Membre ------------------------------------------
 
+@superuser_required
 def ajouter_membre(request):
     if request.method == 'POST':
         form = MembreForm(request.POST)
@@ -228,6 +246,7 @@ def ajouter_membre(request):
     return render(request, 'Nouveau_membre/ajouter_membre.html', {'form':form})
 
 
+@superuser_required
 def modifier_membre(request, membre_id):
     membre = get_object_or_404(Membre, id = membre_id)
 
@@ -244,6 +263,7 @@ def modifier_membre(request, membre_id):
     return render(request, 'Nouveau_membre/modifier_membre.html', {'form':form, 'membre':membre})
 
 
+@superuser_required
 def supprimer_membre(request, membre_id):
     membre = get_object_or_404(Membre, id = membre_id)
 
@@ -255,11 +275,13 @@ def supprimer_membre(request, membre_id):
         return render(request, 'Nouveau_membre/supprimer_membre.html', {'membre':membre})
     
 
+@superuser_required
 def liste_membre(request):
     membres = Membre.objects.all()
     return render(request, 'Nouveau_membre/liste_membre.html', {'membres':membres})
     
 
+@superuser_required
 def emprunter_media(request, media_type, media_id):
     if media_type == 'livres':
         media = get_object_or_404(Livre, pk=media_id)
@@ -319,23 +341,28 @@ def emprunter_media(request, media_type, media_id):
     return render(request, 'Emprunt/emprunter_media.html', {'form':form, 'media_type':media_type, 'media_id':media_id, 'membres':membres})
 
 
+@superuser_required
 def confirmation_emprunt(request):
     return render(request, 'Emprunt/confirmation_emprunt.html')
 
 
+@superuser_required
 def limite_emprunt(request):
     return render(request, 'Emprunt/limite_emprunt.html')
 
 
+@superuser_required
 def emprunt_en_retard(request):
     return render(request, 'Emprunt/emprunt_en_retard.html')
 
 
+@superuser_required
 def liste_emprunt(request):
     emprunts = Emprunt.objects.all()
     return render(request, 'Emprunt/liste_emprunt.html', {'emprunts':emprunts})
 
 
+@superuser_required
 def rendre_emprunt(request, emprunt_id):
     emprunt = get_object_or_404(Emprunt, pk=emprunt_id)
 
