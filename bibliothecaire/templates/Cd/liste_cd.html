@@ -1,0 +1,28 @@
+<section id="cd">
+    <h2>Liste des Cd</h2>
+    <button>
+        <a href="{% url 'bibliothecaire:ajouter_cd' %}">Ajouter un cd</a>
+    </button>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Artiste</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cd in cds %}
+            <tr>
+                <td>{{cd.nom}}</td>
+                <td>{{cd.artiste}}</td>
+                <td>
+                    <a href="{% url 'bibliothecaire:modifier_cd' cd.id %}">&#9998;</a>
+                    <a href="{% url 'bibliothecaire:supprimer_cd' cd.id %}">&#10060;</a>
+                    <a href="{% url 'bibliothecaire:emprunter_media' media_type='cds' media_id=cd.id %}">Emprunter</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>

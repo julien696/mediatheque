@@ -1,0 +1,45 @@
+<section id="emprunt_liste">
+    <h2>Liste des emprunts</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Membre</th>
+                <th>Média</th>
+                <th>Date emprunt</th>
+                <th>Date de retour</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emprunt in emprunts %}
+            <tr>
+                <td>{{emprunt.membre.nom}} {{emprunt.membre.prenom}}</td>
+                <td>{% if emprunt.livre_emprunt %}
+                    Livre : {{emprunt.livre_emprunt.nom}}
+                    {% elif emprunt.cd_emprunt %}
+                    Cd : {{emprunt.cd_emprunt.nom}}
+                    {% elif emprunt.dvd_emprunt %}
+                    Dvd : {{emprunt.dvd_emprunt.nom}}
+                    {% endif %}
+                </td>
+                <td>
+                    {{emprunt.date_emprunt}}
+                </td>
+                <td>
+                    {{emprunt.date_retour}}
+                </td>
+                <td>
+                    {% if emprunt.livre_emprunt and not emprunt.livre_emprunt.disponible %}
+                    <a href="{% url 'bibliothecaire:rendre_emprunt' emprunt.id %}">Rendre</a>
+                    {% elif emprunt.cd_emprunt and not emprunt.cd_emprunt.disponible %}
+                        <a href="{% url 'bibliothecaire:rendre_emprunt' emprunt.id %}">Rendre</a>
+                    {% elif emprunt.dvd_emprunt and not emprunt.dvd_emprunt.disponible %}
+                        <a href="{% url 'bibliothecaire:rendre_emprunt' emprunt.id %}">Rendre</a>
+                    {% else %}
+                        Retourné
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>

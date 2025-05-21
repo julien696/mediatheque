@@ -1,0 +1,28 @@
+<section id="livre">
+    <h2>liste des livres</h2>
+    <button>
+        <a href="{% url 'bibliothecaire:ajouter_livre' %}">Ajouter un livre</a>
+    </button>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Auteur</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for livre in livres %}
+            <tr>
+                <td>{{livre.nom}}</td>
+                <td>{{livre.auteur}}</td>
+                <td>
+                    <a href="{% url 'bibliothecaire:modifier_livre' livre.id %}">&#9998;</a>
+                    <a href="{% url 'bibliothecaire:supprimer_livre' livre.id %}">&#10060;</a>
+                    <a href="{% url 'bibliothecaire:emprunter_media' media_type='livres' media_id=livre.id %}">Emprunter</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>

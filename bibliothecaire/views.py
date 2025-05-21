@@ -28,12 +28,12 @@ def ajouter_livre(request):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_livre")
         
     else:
         form = LivreForm()
     
-    return render(request, 'ajouter_livre.html', {'form':form})
+    return render(request, 'Livre/ajouter_livre.html', {'form':form})
 
 
 def modifier_livre(request, livre_id):
@@ -44,12 +44,12 @@ def modifier_livre(request, livre_id):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_livre")
         
     else:
         form = LivreForm(instance = livre)
     
-    return render(request, 'modifier_livre.html', {'form':form, 'livre':livre})
+    return render(request, 'Livre/modifier_livre.html', {'form':form, 'livre':livre})
 
 
 def supprimer_livre(request, livre_id):
@@ -57,9 +57,14 @@ def supprimer_livre(request, livre_id):
 
     if request.method == 'POST':
         livre.delete()
-        return redirect("bibliothecaire:accueil_bibliothecaire")
+        return redirect("bibliothecaire:liste_livre")
     
-    return render(request, 'supprimer_livre.html', {'livre':livre})
+    return render(request, 'Livre/supprimer_livre.html', {'livre':livre})
+
+
+def liste_livre(request):
+    livres = Livre.objects.all()
+    return render(request, 'Livre/liste_livre.html', {'livres':livres})
 
 #-------------- fin de partie livre -----------------------------------
 
@@ -71,12 +76,12 @@ def ajouter_cd(request):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_cd")
         
     else:
             form = CdForm()
 
-    return render(request, 'ajouter_cd.html', {'form':form})
+    return render(request, 'Cd/ajouter_cd.html', {'form':form})
 
 
 def modifier_cd(request, cd_id):
@@ -87,12 +92,12 @@ def modifier_cd(request, cd_id):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_cd")
         
     else:
         form = CdForm(instance = cd)
 
-    return render(request, 'modifier_cd.html', {'form':form, 'cd':cd})
+    return render(request, 'Cd/modifier_cd.html', {'form':form, 'cd':cd})
 
 
 def supprimer_cd(request, cd_id):
@@ -100,9 +105,14 @@ def supprimer_cd(request, cd_id):
 
     if request.method == 'POST':
         cd.delete()
-        return redirect("bibliothecaire:accueil_bibliothecaire")
+        return redirect("bibliothecaire:liste_cd")
     
-    return render(request, 'supprimer_cd.html', {'cd':cd})
+    return render(request, 'Cd/supprimer_cd.html', {'cd':cd})
+
+
+def liste_cd(request):
+    cds = Cd.objects.all()
+    return render(request, 'Cd/liste_cd.html', {'cds':cds})
 
 #----------------------- fin de partie cd ------------------------------
 
@@ -114,12 +124,12 @@ def ajouter_dvd(request):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_dvd")
     
     else:
         form = DvdForm()
     
-    return render(request, 'ajouter_dvd.html', {'form':form})
+    return render(request, 'Dvd/ajouter_dvd.html', {'form':form})
 
 
 def modifier_dvd(request, dvd_id):
@@ -130,12 +140,12 @@ def modifier_dvd(request, dvd_id):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_dvd")
         
     else:
         form = DvdForm(instance = dvd)
 
-    return render(request, 'modifier_dvd.html', {'form':form, 'dvd':dvd})
+    return render(request, 'Dvd/modifier_dvd.html', {'form':form, 'dvd':dvd})
 
 
 def supprimer_dvd(request, dvd_id):
@@ -143,9 +153,14 @@ def supprimer_dvd(request, dvd_id):
 
     if request.method == 'POST':
         dvd.delete()
-        return redirect("bibliothecaire:accueil_bibliothecaire")
+        return redirect("bibliothecaire:liste_dvd")
     
-    return render(request, 'supprimer_dvd.html', {'dvd':dvd})
+    return render(request, 'Dvd/supprimer_dvd.html', {'dvd':dvd})
+
+
+def liste_dvd(request):
+    dvds = Dvd.objects.all()
+    return render(request, 'Dvd/liste_dvd.html', {'dvds':dvds})
 
 #-----------------fin de partie dvd ---------------------------------------
 
@@ -157,12 +172,12 @@ def ajouter_jeux_de_plateau(request):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_jeux")
     
     else:
         form = JeuxDePlateauForm()
     
-    return render(request, 'ajouter_jeux_de_plateau.html', {'form':form})
+    return render(request, 'Jeux_de_plateau/ajouter_jeux_de_plateau.html', {'form':form})
 
 
 def modifier_jeux_de_plateau(request, jeux_de_plateau_id):
@@ -173,12 +188,12 @@ def modifier_jeux_de_plateau(request, jeux_de_plateau_id):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_jeux")
         
     else:
         form = JeuxDePlateauForm(instance = jeux_de_plateau)
 
-    return render(request, 'modifier_jeux_de_plateau.html', {'form':form, 'jeux_de_plateau':jeux_de_plateau})
+    return render(request, 'Jeux_de_plateau/modifier_jeux_de_plateau.html', {'form':form, 'jeux_de_plateau':jeux_de_plateau})
 
 
 def supprimer_jeux_de_plateau(request, jeux_de_plateau_id):
@@ -186,9 +201,14 @@ def supprimer_jeux_de_plateau(request, jeux_de_plateau_id):
 
     if request.method == 'POST':
         jeux_de_plateau.delete()
-        return redirect("bibliothecaire:accueil_bibliothecaire")
+        return redirect("bibliothecaire:liste_jeux")
     
-    return render(request, 'supprimer_jeux_de_plateau.html', {'jeux_de_plateau':jeux_de_plateau})
+    return render(request, 'Jeux_de_plateau/supprimer_jeux_de_plateau.html', {'jeux_de_plateau':jeux_de_plateau})
+
+
+def liste_jeux(request):
+    jeux = Jeux_de_plateau.objects.all()
+    return render(request, 'Jeux_de_plateau/liste_jeux.html', {'jeux':jeux})
 
 #--------------------------Fin de partie jeux de plateau -----------------------------------
 
@@ -200,12 +220,12 @@ def ajouter_membre(request):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_membre")
         
     else:
         form = MembreForm()
 
-    return render(request, 'ajouter_membre.html', {'form':form})
+    return render(request, 'Nouveau_membre/ajouter_membre.html', {'form':form})
 
 
 def modifier_membre(request, membre_id):
@@ -216,12 +236,12 @@ def modifier_membre(request, membre_id):
 
         if form.is_valid():
             form.save()
-            return redirect("bibliothecaire:accueil_bibliothecaire")
+            return redirect("bibliothecaire:liste_membre")
         
     else:
         form = MembreForm(instance = membre)
 
-    return render(request, 'modifier_membre.html', {'form':form, 'membre':membre})
+    return render(request, 'Nouveau_membre/modifier_membre.html', {'form':form, 'membre':membre})
 
 
 def supprimer_membre(request, membre_id):
@@ -229,10 +249,15 @@ def supprimer_membre(request, membre_id):
 
     if request.method == 'POST':
         membre.delete()
-        return redirect("bibliothecaire:accueil_bibliothecaire")
+        return redirect("bibliothecaire:liste_membre")
     
     else:
-        return render(request, 'supprimer_membre.html', {'membre':membre})
+        return render(request, 'Nouveau_membre/supprimer_membre.html', {'membre':membre})
+    
+
+def liste_membre(request):
+    membres = Membre.objects.all()
+    return render(request, 'Nouveau_membre/liste_membre.html', {'membres':membres})
     
 
 def emprunter_media(request, media_type, media_id):
@@ -247,11 +272,11 @@ def emprunter_media(request, media_type, media_id):
 
     else:
         messages.warning(request, 'Le média est inconnue')
-        return redirect("bibliothecaire:accueil_bibliothecaire")
+        return redirect("bibliothecaire:liste_emprunt")
     
     if not media.disponible:
         messages.warning(request, 'Le média est indisponible')
-        return redirect("bibliothecaire:accueil_bibliothecaire")
+        return redirect("bibliothecaire:liste_emprunt")
     
 
     if request.method == 'POST':
@@ -262,12 +287,12 @@ def emprunter_media(request, media_type, media_id):
         # Vérification du nombre d'emprunt
             emprunts_actifs = Emprunt.objects.filter(membre = membre, date_retour_effectif__isnull=True).count()
             if emprunts_actifs >= 3 :
-                return render(request, 'limite_emprunt.html', {'membre':membre})
+                return render(request, 'Emprunt/limite_emprunt.html', {'membre':membre})
             
             # Vérification des emprunts en retard
             emprunt_en_retard = Emprunt.objects.filter(membre = membre, date_retour_effectif__isnull=True, date_retour__lt = date.today())
             if emprunt_en_retard.exists():
-                return render(request, 'emprunt_en_retard.html', {'membre':membre})
+                return render(request, 'Emprunt/emprunt_en_retard.html', {'membre':membre})
         
             
             # Création de l'emprunt
@@ -285,25 +310,30 @@ def emprunter_media(request, media_type, media_id):
 
             media.disponible = False
             media.save()
-            return render(request, 'confirmation_emprunt.html', {'media':media, 'membre':membre})
+            return render(request, 'Emprunt/confirmation_emprunt.html', {'media':media, 'membre':membre})
 
     else:
         form = EmprunterMediaForm()
 
     membres = Membre.objects.all()
-    return render(request, 'emprunter_media.html', {'form':form, 'media_type':media_type, 'media_id':media_id, 'membres':membres})
+    return render(request, 'Emprunt/emprunter_media.html', {'form':form, 'media_type':media_type, 'media_id':media_id, 'membres':membres})
 
 
 def confirmation_emprunt(request):
-    return render(request, 'confirmation_emprunt.html')
+    return render(request, 'Emprunt/confirmation_emprunt.html')
 
 
 def limite_emprunt(request):
-    return render(request, 'limite_emprunt.html')
+    return render(request, 'Emprunt/limite_emprunt.html')
 
 
 def emprunt_en_retard(request):
-    return render(request, 'emprunt_en_retard.html')
+    return render(request, 'Emprunt/emprunt_en_retard.html')
+
+
+def liste_emprunt(request):
+    emprunts = Emprunt.objects.all()
+    return render(request, 'Emprunt/liste_emprunt.html', {'emprunts':emprunts})
 
 
 def rendre_emprunt(request, emprunt_id):
