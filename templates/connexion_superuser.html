@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+</head>
+
+<body>
+    <h2>
+        Connexion bibliothecaire
+    </h2>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <label>Identifiant :</label>
+            <input type="text" name="username"><br><br>
+            <label>Mot de passe :</label>
+            <input type="password" name="password"><br><br>
+            <button type="submit">Se connecter</button>
+        </form>
+        <span>
+            <a href="{% url 'accueil' %}">Retour Accueil médiathéque</a>
+        </span>
+        
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+        <script>
+            alert('{{message}}')
+        </script>
+        {% endfor %}
+    {% endif %}
+</body>
+
