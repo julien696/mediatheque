@@ -1,4 +1,9 @@
-<h2>Ajouter un jeu de plateau</h2>
+{% extends 'base_bibliothecaire.html' %}
+
+{% block title %}Ajouter un jeux de plateau{% endblock %}
+
+{% block content %}
+<h1>Ajouter un jeu de plateau</h1>
 
 <form method="post">
     {% csrf_token %}
@@ -8,3 +13,4 @@
 <p>
     Retournez sur <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">accueil bibliothecaire</a>
 </p>
+{% endblock %}

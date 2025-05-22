@@ -1,4 +1,9 @@
-<h2>Emprunter : {{media.nom}}</h2>
+{% extends 'base_bibliothecaire.html' %}
+
+{% block title %}Emprunter Média{% endblock %}
+
+{% block content %}
+<h1>Emprunter : {{media.nom}}</h1>
 
 <form method="post">
     {% csrf_token %}
@@ -8,3 +13,4 @@
 <p>
     Retournez sur <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">accueil bibliothecaire</a>
 </p>
+{% endblock %}

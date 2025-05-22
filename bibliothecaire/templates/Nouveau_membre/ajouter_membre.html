@@ -1,5 +1,9 @@
-<h2>Ajouter un Membre</h2>
+{% extends 'base_bibliothecaire.html' %}
 
+{% block title %}Ajouter Membre{% endblock %}
+
+{% block content %}
+<h1>Ajouter un Membre</h1>
 <form method="post">
     {% csrf_token %}
     {{form.as_p}}
@@ -8,3 +12,4 @@
 <p>
     Retournez sur <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">accueil bibliothecaire</a>
 </p>
+{% endblock %}

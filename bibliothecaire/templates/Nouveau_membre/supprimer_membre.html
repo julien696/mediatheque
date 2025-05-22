@@ -1,11 +1,15 @@
-<h2>
-    Confirmer la suppression
-</h2>
+{% extends 'base_bibliothecaire.html' %}
+
+{% block title %}Supprimer Membre{% endblock %}
+
+{% block content %}
+<h1>Confirmer la suppression</h>
 <span>
-    Voulez-vous supprimer {{membre.nom}} - {{membre.prenom}}
+    Voulez-vous supprimer {{membre.nom}} - {{membre.prenom}}?
 </span>
 <form method="post">
     {% csrf_token %}
     <input type="submit" value="Confimer la suppression">
     <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">Annuler</a>
 </form>
+{% endblock %}
