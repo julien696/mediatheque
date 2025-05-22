@@ -3,16 +3,16 @@ Projet développé avec Django.
 
 ## POUR INSTALLER LE PROJET
 ### 1. Cloner le projet
-Dans le terminal d'un nouveau dossier entrer la commande :
+Dans le terminal d'un nouveau dossier entrer la commande :\
 ``` git clone https://github.com/julien696/mediatheque.git``` 
 ``` cd mediatheque```
 
 ### 2. Créer un environement virtuel
 ``` python -m venv env```
-Puis activer.
-Sous Windows :
-``` env\Scripts\activate```
-Sous Mac/Linux :
+Puis activer.\
+Sous Windows :\
+``` env\Scripts\activate```\
+Sous Mac/Linux :\
 ``` source env/bin/activate```
 
 ### 3. Installer les dépendance
