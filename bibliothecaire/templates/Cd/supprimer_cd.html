@@ -1,11 +1,15 @@
-<h2>
-    Confirmer la suppression
-</h2>
+{% extends 'base_bibliothecaire.html' %}
+
+{% block title %}Supprimer un Cd{% endblock %}
+
+{% block content %}
+<h1>Confirmer la suppression</h1>
 <span>
-    Voulez-vous supprimer {{cd.nom}}
+    Voulez-vous supprimer {{cd.nom}} de {{cd.artiste}} ?
 </span>
 <form method="post">
     {% csrf_token %}
-    <input type="submit" value="Confimer la suppression">
+    <input type="submit" value="Confirmer la suppression">
     <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">Annuler</a>
 </form>
+{% endblock %}

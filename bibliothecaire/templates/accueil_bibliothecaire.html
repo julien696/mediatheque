@@ -1,35 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'base_bibliothecaire.html' %}
 
-{% block title %}Bibliothecaire{% endblock %}
-
-{% block submenu %}
-<nav>
-    <ul>
-        <li>
-            <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#livre">Livre</a>
-        </li>
-        <li>
-            <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#cd">Cd</a>
-        </li>
-        <li>
-            <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#dvd">Dvd</a>
-        </li>
-        <li>
-            <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#jeux">Jeux de plateau</a>
-        </li>
-        <li>
-            <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#membre_liste">Liste des membres</a>
-        </li>
-        <li>
-            <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#emprunt_liste">Listes des emprunts</a>
-        </li>
-    </ul>  
-</nav>
-{% endblock %}
-
-{% block h1 %}Espace Bibliothecaire{% endblock %}
+{% block title %}Accueil bibliothecaire{% endblock %}
 
 {% block content %}
+
+<h1>
+    Espace bibliothecaire
+</h1>
 
 {% if messages %}
     {% for message in messages %}

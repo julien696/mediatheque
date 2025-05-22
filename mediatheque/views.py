@@ -4,7 +4,7 @@ from django.contrib import messages
 
 
 def accueil(request):
-    return render(request, "base.html")
+    return render(request, "index.html")
 
 
 def connexion_superuser(request):

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Médiathèque{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <h1>{% block h1 %}Bienvenue sur la Médiathèque{% endblock %}</h1>
+        <p>Choisissez votre espace :</p>
+        <ul>
+            <li><a href="{% url 'membre:accueil_membre' %}">Espace Membre</a></li>
+            <li><a href="{% url 'connexion_superuser' %}">Espace Bibliothécaire</a></li>
+        </ul>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <small>
+            © Julien Chauvin
+        </small>
+    </footer>
+</body>
+</html>

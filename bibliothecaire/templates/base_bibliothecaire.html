@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Espace Bibliothécaire{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+        <ul>
+            <li>
+                <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#livre">Livre</a>
+            </li>
+            <li>
+                <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#cd">Cd</a>
+            </li>
+            <li>
+                <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#dvd">Dvd</a>
+            </li>
+            <li>
+                <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#jeux">Jeux de plateau</a>
+            </li>
+            <li>
+                <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#membre_liste">Liste des membres</a>
+            </li>
+            <li>
+                <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}#emprunt_liste">Listes des emprunts</a>
+            </li>
+        </ul>  
+    </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <small>
+            © Julien Chauvin
+        </small>
+    </footer>
+</body>
+</html>

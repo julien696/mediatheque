@@ -20,7 +20,7 @@ from mediatheque.views import accueil, connexion_superuser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', accueil, name = 'accueil'),
+    path('', accueil , name = 'accueil'),
     path('connexion_superuser', connexion_superuser, name = 'connexion_superuser'),
     path('membre/', include('membre.urls')),
     path('bibliothecaire/', include('bibliothecaire.urls'))

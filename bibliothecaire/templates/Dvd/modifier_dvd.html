@@ -1,4 +1,9 @@
-<h2>Modifier {{dvd.nom}}</h2>
+{% extends 'base_bibliothecaire.html' %}
+
+{% block title %}Modifier un Dvd{% endblock %}
+
+{% block content %}
+<h1>Modifier {{dvd.nom}} de {{dvd.realisateur}}</h1>
 
 <form method="post">
     {% csrf_token %}
@@ -8,3 +13,4 @@
 <p>
     Retournez sur <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">accueil bibliothecaire</a>
 </p>
+{% endblock %}

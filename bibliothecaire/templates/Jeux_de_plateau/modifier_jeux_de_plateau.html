@@ -1,4 +1,9 @@
-<h2>Modifier {{jeux_de_plateau.nom}}</h2>
+{% extends 'base_bibliothecaire.html' %}
+
+{% block title %}MOdifier jeux de plateau{% endblock %}
+
+{% block content %}
+<h1>Modifier {{jeux_de_plateau.nom}} de {{jeux_de_plateau.createur}}</h1>
 
 <form method="post">
     {% csrf_token %}
@@ -8,3 +13,4 @@
 <p>
     Retournez sur <a href="{% url 'bibliothecaire:accueil_bibliothecaire' %}">accueil bibliothecaire</a>
 </p>
+{% endblock %}
